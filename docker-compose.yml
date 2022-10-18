@@ -1,0 +1,14 @@
+version: "3.7"
+services:
+  newsapp:
+    build: .
+    restart: always
+    ports:
+      - 8080:8080
+    depends_on:
+      - ampada_db
+  ampada_db:
+    image: "mongo"
+    restart: always
+    ports:
+      - 27017:27017

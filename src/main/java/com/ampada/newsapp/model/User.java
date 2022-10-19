@@ -1,9 +1,12 @@
 package com.ampada.newsapp.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.experimental.Accessors;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.security.core.GrantedAuthority;
+import java.util.List;
 
 @Data
 @Accessors(chain = true)
@@ -14,4 +17,15 @@ public class User {
     private String id;
     private String username;
     private String password;
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    private List<Roles> roles = List.of(Roles.USER);
+
+    public enum Roles implements GrantedAuthority {
+        USER, ADMIN;
+
+        @Override
+        public String getAuthority() {
+            return super.toString();
+        }
+    }
 }

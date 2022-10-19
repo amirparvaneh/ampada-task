@@ -1,5 +1,6 @@
 package com.ampada.newsapp.service;
 
+import com.ampada.newsapp.model.User;
 import com.ampada.newsapp.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -14,6 +15,8 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return null;
+        User user = userRepository.findByUsername(username).orElseThrow();
+        return new org.springframework.security.core.userdetails.
+                User(user.getUsername(), user.getPassword(), user.getRoles());
     }
 }

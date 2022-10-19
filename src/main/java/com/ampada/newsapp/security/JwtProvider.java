@@ -29,7 +29,7 @@ public class JwtProvider {
         try {
             // todo => make password more secure
             keyStore = KeyStore.getInstance("JKS");
-            keyStore.load(getClass().getResourceAsStream("/key-demo.jks"), "@mapsa".toCharArray());
+            keyStore.load(getClass().getResourceAsStream("/key-demo.jks"), "@ampada".toCharArray());
         } catch (KeyStoreException | CertificateException | NoSuchAlgorithmException | IOException e) {
             e.printStackTrace();
         }

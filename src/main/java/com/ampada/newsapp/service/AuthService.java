@@ -44,7 +44,7 @@ public class AuthService implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        User user = new User().setUserName("amir")
+        User user = new User().setUsername("amir")
                 .setPassword(passwordEncoder.encode("password"));
         userRepository.save(user);
     }

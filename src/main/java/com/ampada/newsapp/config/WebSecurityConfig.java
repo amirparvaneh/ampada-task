@@ -33,10 +33,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .passwordEncoder(passwordEncoder());
     }
 
-    @Override
-    public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/h2-console/**");
-    }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {

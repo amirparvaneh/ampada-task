@@ -1,10 +1,13 @@
 package com.ampada.newsapp.dto;
 
 
+import lombok.Data;
+import lombok.experimental.Accessors;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 
 
-
+@Data
+@Accessors(chain = true)
 public class LoginRequest {
     private String username;
     private String password;

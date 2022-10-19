@@ -6,6 +6,7 @@ import com.ampada.newsapp.dto.LoginRequest;
 import com.ampada.newsapp.model.User;
 import com.ampada.newsapp.repository.UserRepository;
 import com.ampada.newsapp.security.JwtProvider;
+import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -14,6 +15,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class AuthService implements CommandLineRunner {
 
     private final UserRepository userRepository;

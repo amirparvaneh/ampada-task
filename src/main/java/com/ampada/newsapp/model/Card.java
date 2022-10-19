@@ -1,5 +1,7 @@
 package com.ampada.newsapp.model;
 
+import lombok.Data;
+import lombok.experimental.Accessors;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -7,6 +9,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 import java.util.Date;
 import java.util.List;
 
+@Data
+@Accessors(chain = true)
 @Document(collection = "Card")
 public class Card {
 
@@ -20,54 +24,4 @@ public class Card {
     private Date modifiedOn;
     private List<User> members;
 
-    public Card() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getCardTitle() {
-        return cardTitle;
-    }
-
-    public void setCardTitle(String cardTitle) {
-        this.cardTitle = cardTitle;
-    }
-
-    public Board getBoardId() {
-        return boardId;
-    }
-
-    public void setBoardId(Board boardId) {
-        this.boardId = boardId;
-    }
-
-    public Date getCreatedOn() {
-        return createdOn;
-    }
-
-    public void setCreatedOn(Date createdOn) {
-        this.createdOn = createdOn;
-    }
-
-    public Date getModifiedOn() {
-        return modifiedOn;
-    }
-
-    public void setModifiedOn(Date modifiedOn) {
-        this.modifiedOn = modifiedOn;
-    }
-
-    public List<User> getMembers() {
-        return members;
-    }
-
-    public void setMembers(List<User> members) {
-        this.members = members;
-    }
 }

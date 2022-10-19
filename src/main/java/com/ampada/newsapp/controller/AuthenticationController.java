@@ -5,6 +5,7 @@ import com.ampada.newsapp.dto.LoginRequest;
 import com.ampada.newsapp.model.User;
 import com.ampada.newsapp.service.AuthService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -15,7 +16,7 @@ public class AuthenticationController {
     private final AuthService authService;
 
     @PostMapping("/signUp")
-    public User register(@RequestBody User user) {
+    public ResponseEntity register(@RequestBody User user) {
         return authService.register(user);
     }
 

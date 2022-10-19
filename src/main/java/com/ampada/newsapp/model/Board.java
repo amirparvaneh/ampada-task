@@ -14,7 +14,7 @@ import java.util.Date;
 public class Board {
 
     @Id
-    private Long id;
+    private String id;
     private String boardName;
     @DateTimeFormat(pattern = "MM/dd/yyyy HH:mm:ss")
     private Date createdOn;

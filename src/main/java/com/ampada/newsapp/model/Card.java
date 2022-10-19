@@ -15,7 +15,7 @@ import java.util.List;
 public class Card {
 
     @Id
-    private Long id;
+    private String id;
     private String cardTitle;
     private Board boardId;
     @DateTimeFormat(pattern = "MM/dd/yyyy HH:mm:ss")

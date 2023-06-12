@@ -2,7 +2,9 @@ package com.ampada.newsapp.service.boardService;
 
 import com.ampada.newsapp.model.Board;
 import com.ampada.newsapp.repository.BoardRepository;
+import org.springframework.stereotype.Service;
 
+@Service
 public class BoardServiceImpl implements BoardService{
 
     private final BoardRepository boardRepository;

@@ -1,14 +1,38 @@
-version: "3.7"
+version: '3'
 services:
-  newsapp:
-    build: .
-    restart: always
+  mongodb:
+    image: mongo
+    ports:
+      - 27017:27017
+    volumes:
+      - ./data/db:/data/db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=admin
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
       - 8080:8080
     depends_on:
-      - ampada_db
-  ampada_db:
-    image: "mongo"
-    restart: always
-    ports:
-      - 27017:27017
+      - mongodb
+    environment:
+      - SPRING_DATA_MONGODB_URI=mongodb://admin:admin@mongodb:27017/mongodb?authSource=admin
+
+
+#version: "3.7"
+#services:
+#  newsapp:
+#    build: .
+#    restart: always
+#    ports:
+#      - 8080:8080
+#    depends_on:
+#      - ampada_db
+#  ampada_db:
+#    image: "mongo"
+#    restart: always
+#    ports:
+#      - 27017:27017

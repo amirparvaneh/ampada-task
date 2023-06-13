@@ -1,5 +1,7 @@
 package com.ampada.newsapp.service.userService;
 
+import com.ampada.newsapp.dto.LoginDto;
+import com.ampada.newsapp.dto.UserDto;
 import com.ampada.newsapp.filters.JwtTokenUtil;
 import com.ampada.newsapp.model.User;
 import com.ampada.newsapp.repository.UserRepository;
@@ -17,16 +19,37 @@ public class UserServiceImpl implements UserService {
     private final BCryptPasswordEncoder passwordEncoder;
     private final JwtTokenUtil jwtTokenUtil;
 
-    public UserServiceImpl(UserRepository userRepository,BCryptPasswordEncoder bCryptPasswordEncoder, JwtTokenUtil jwtTokenUtil){
+    public UserServiceImpl(UserRepository userRepository, BCryptPasswordEncoder bCryptPasswordEncoder, JwtTokenUtil jwtTokenUtil) {
         this.userRepository = userRepository;
         this.passwordEncoder = bCryptPasswordEncoder;
         this.jwtTokenUtil = jwtTokenUtil;
     }
 
-    @Override
-    public List<User> findAll() {
-        List<User> userList = new ArrayList<>();
-        userList = userRepository.findAll();
-        return userList;
+    public User register(UserDto userDto) {
+        String encryptedPassword = passwordEncoder.encode(userDto.getPassword());
+        User user = new User();
+        user.setUsername(userDto.getUserName());
+        user.setPassword(encryptedPassword);
+        return userRepository.save(user);
+    }
+
+    public String login(LoginDto loginDto) throws Exception {
+        User user = userRepository.findByUsername(loginDto.getUsername());
+        if (user == null) {
+            throw new Exception("Invalid username or password");
+        }
+        boolean passwordMatch = passwordEncoder.matches(loginDto.getPassword(), user.getPassword());
+        if (!passwordMatch) {
+            throw new Exception("Invalid username or password");
+        }
+        return jwtTokenUtil.generateToken(user.getUsername());
+    }
+
+    public boolean validateToken(String token) {
+        return jwtTokenUtil.validateToken(token);
+    }
+
+    public String getUsernameFromToken(String token) {
+        return jwtTokenUtil.getUsernameFromToken(token);
     }
 }

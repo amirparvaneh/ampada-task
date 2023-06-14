@@ -7,10 +7,10 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
-public class BoardService {
+public class BoardServiceImpl {
     private final BoardRepository boardRepository;
 
-    public BoardService(BoardRepository boardRepository) {
+    public BoardServiceImpl(BoardRepository boardRepository) {
         this.boardRepository = boardRepository;
     }
 

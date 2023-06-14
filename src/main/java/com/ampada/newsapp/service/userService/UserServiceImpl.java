@@ -33,6 +33,10 @@ public class UserServiceImpl implements UserService {
         return userRepository.save(user);
     }
 
+    public User getUserByUserName(String userName){
+        return userRepository.findByUsername(userName);
+    }
+
     public String login(LoginDto loginDto) throws Exception {
         User user = userRepository.findByUsername(loginDto.getUsername());
         if (user == null) {

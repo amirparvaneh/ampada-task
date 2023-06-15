@@ -46,7 +46,7 @@ public class BoardServiceImpl {
     }
 
     public List<Board> getBoardsSortedByModifiedOn() {
-        return boardRepository.findAllByOrderByModifiedOnDesc();
+        return boardRepository.findAllBoardByOrderByModifiedOnDesc();
     }
 }
 

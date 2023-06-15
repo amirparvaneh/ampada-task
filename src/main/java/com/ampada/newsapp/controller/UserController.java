@@ -30,7 +30,7 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody LoginDto loginDto) throws Exception {
+    public ResponseEntity<String> login(@RequestBody LoginDto loginDto)throws Exception{
         String token = userService.login(loginDto);
         return ResponseEntity.ok(token);
     }

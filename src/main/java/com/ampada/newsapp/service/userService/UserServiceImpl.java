@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl {
 
     private final UserRepository userRepository;
     private final BCryptPasswordEncoder passwordEncoder;
@@ -55,5 +55,9 @@ public class UserServiceImpl implements UserService {
 
     public String getUsernameFromToken(String token) {
         return jwtTokenUtil.getUsernameFromToken(token);
+    }
+
+    public List<User> getAllUser(){
+        return userRepository.findAll();
     }
 }

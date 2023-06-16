@@ -62,6 +62,3 @@ Refer to the API documentation for the available endpoints and their usages.
 
 Contributions are welcome! If you find any issues or would like to add new features, please open an issue or submit a pull request.
 
-### License
-
-This project is licensed under the [MIT License](LICENSE).

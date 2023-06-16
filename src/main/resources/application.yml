@@ -1,7 +1,14 @@
 spring:
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
   data:
     mongodb:
       database: mongodb
       port: 27017
       uri: mongodb://localhost:27017
       host: mongodb
+
+jwt:
+  secret: 123456
+  expiration: 36000000

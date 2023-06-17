@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -33,5 +34,15 @@ public class UserController {
     public ResponseEntity<String> login(@RequestBody LoginDto loginDto)throws Exception{
         String token = userService.login(loginDto);
         return ResponseEntity.ok(token);
+    }
+
+    @GetMapping("/all")
+    public List<User> getAllUser(){
+        return userService.getAllUser();
+    }
+
+    @GetMapping
+    public User getUserByName(@RequestParam("userName") String userName){
+        return userService.getUserByUserName(userName);
     }
 }

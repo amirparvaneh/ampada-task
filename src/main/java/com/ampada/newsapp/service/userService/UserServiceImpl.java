@@ -2,14 +2,12 @@ package com.ampada.newsapp.service.userService;
 
 import com.ampada.newsapp.dto.LoginDto;
 import com.ampada.newsapp.dto.UserDto;
-import com.ampada.newsapp.filters.JwtTokenUtil;
+import com.ampada.newsapp.auth.JwtTokenUtil;
 import com.ampada.newsapp.model.User;
 import com.ampada.newsapp.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service

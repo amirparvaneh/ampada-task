@@ -1,4 +1,4 @@
-package com.ampada.newsapp.security;
+package com.ampada.newsapp.auth;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
